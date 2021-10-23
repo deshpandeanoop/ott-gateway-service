@@ -1,4 +1,4 @@
-package com.github.ott.gateway.service.data;
+package com.github.ott.gateway.service.data.db;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

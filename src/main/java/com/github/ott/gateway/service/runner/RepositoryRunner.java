@@ -1,7 +1,7 @@
 package com.github.ott.gateway.service.runner;
 
-import com.github.ott.gateway.service.data.OttServiceAccount;
-import com.github.ott.gateway.service.data.PlatformUser;
+import com.github.ott.gateway.service.data.db.OttServiceAccount;
+import com.github.ott.gateway.service.data.db.PlatformUser;
 import com.github.ott.gateway.service.enums.OttPlatformType;
 import com.github.ott.gateway.service.repository.OttServiceAccRepository;
 import com.github.ott.gateway.service.repository.PlatformUserRepository;

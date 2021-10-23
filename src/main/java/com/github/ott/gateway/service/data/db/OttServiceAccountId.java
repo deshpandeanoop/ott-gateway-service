@@ -1,4 +1,4 @@
-package com.github.ott.gateway.service.data;
+package com.github.ott.gateway.service.data.db;
 
 import com.github.ott.gateway.service.enums.OttPlatformType;
 import lombok.EqualsAndHashCode;
