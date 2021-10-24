@@ -30,7 +30,7 @@ public class PlatformServiceController {
     @PostMapping("/validate")
     public ResponseEntity<String> validateUser(@RequestBody UserAccount userAccount) {
         PlatformUser user = platformUserRepository.getByUsername(userAccount.getUsername());
-        if(null == user) {
+        if(null == user || !user.getPassword().equals(userAccount.getPassword())) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid User!");
         }
         return ResponseEntity.ok("Success!");

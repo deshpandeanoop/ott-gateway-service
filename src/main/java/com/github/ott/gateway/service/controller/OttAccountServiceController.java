@@ -23,7 +23,7 @@ public class OttAccountServiceController {
     }
 
     @GetMapping
-    public ResponseEntity<GetOttServiceAccResponse> getOttAccounts(String gatewayUserId) {
+    public ResponseEntity<GetOttServiceAccResponse> getOttAccounts(@RequestParam("gatewayUserId") String gatewayUserId) {
         GetOttServiceAccResponse getOttServiceAccResponse = new GetOttServiceAccResponse();
         getOttServiceAccResponse.setOttServiceAccounts(ottServiceAccRepository.getByGateWayServiceUserId(gatewayUserId));
         return ResponseEntity.ok(getOttServiceAccResponse);
