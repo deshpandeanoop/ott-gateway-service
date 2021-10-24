@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/ottaccounts")
+@RequestMapping("/v1/ottaccounts")
 @RestController
 @Slf4j
 public class OttAccountServiceController {
