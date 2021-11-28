@@ -29,6 +29,7 @@ public class OttAccountServiceController {
         return ResponseEntity.ok("Success!");
     }
 
+    @CrossOrigin
     @GetMapping
     public ResponseEntity<GetOttServiceAccResponse> getOttAccounts(@RequestParam("gatewayUserId") String gatewayUserId,
                                                                    @RequestParam("fetchOnlyNames") boolean fetchOnlyNames,
