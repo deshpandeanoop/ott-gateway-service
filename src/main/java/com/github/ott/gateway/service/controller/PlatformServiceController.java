@@ -35,7 +35,7 @@ public class PlatformServiceController {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userAccount.getUsername(), userAccount.getPassword()));
         } catch (BadCredentialsException badCredException) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials!");
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Invalid credentials!");
         }
         return ResponseEntity.ok(new AuthResponse(platformUserService.generateJwtToken(userAccount)));
     }

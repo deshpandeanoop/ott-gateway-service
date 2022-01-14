@@ -4,7 +4,7 @@ import com.github.ott.gateway.service.data.db.OttServiceAccount;
 import com.github.ott.gateway.service.data.request.AddOttServiceAccRequest;
 import com.github.ott.gateway.service.data.response.GetOttServiceAccResponse;
 import com.github.ott.gateway.service.enums.OttPlatformType;
-import com.github.ott.gateway.service.repository.OttServiceAccRepository;
+import com.github.ott.gateway.service.service.IOttAccountService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,11 +21,11 @@ import java.util.stream.Collectors;
 public class OttAccountServiceController {
 
     @Autowired
-    private OttServiceAccRepository ottServiceAccRepository;
+    private IOttAccountService ottAccountService;
 
     @PostMapping
     public ResponseEntity<String> addOttAccounts(@RequestBody AddOttServiceAccRequest ottServiceAccRequest) {
-        ottServiceAccRepository.saveAll(ottServiceAccRequest.getOttServiceAccountsDetails());
+        ottAccountService.saveOttAccounts(ottServiceAccRequest.getOttServiceAccountsDetails());
         return ResponseEntity.ok("Success!");
     }
 
@@ -35,7 +35,7 @@ public class OttAccountServiceController {
                                                                    @RequestParam("fetchOnlyNames") boolean fetchOnlyNames,
                                                                    @RequestParam("platformType") String platformType) {
         GetOttServiceAccResponse getOttServiceAccResponse = new GetOttServiceAccResponse();
-        List<OttServiceAccount> serviceAccounts = ottServiceAccRepository.getByGateWayServiceUserId(gatewayUserId);
+        List<OttServiceAccount> serviceAccounts = ottAccountService.getOttAccountsOfUser(gatewayUserId);
         /**
          * Ideally the predicate push down should happen, since the product is in prototyping phase
          * adding in the filtering logic in the controller layer for now.
